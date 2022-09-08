@@ -1,6 +1,7 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.EmployeesDB;
+import com.kainos.ea.employee_stuff.Employee;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -22,6 +23,14 @@ public class WebService {
     public String reportEmployeeDetails() {
         String result = String.join("\n ", EmployeesDB.getEmployees());
         return result;
+    }
+
+    @POST
+    @Path("/addEmployee")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Employee insertEmployee(Employee employee) {
+        return EmployeesDB.insertEmployees(employee);
     }
 
     @POST

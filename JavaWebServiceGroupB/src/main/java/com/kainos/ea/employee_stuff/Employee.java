@@ -1,5 +1,8 @@
 package com.kainos.ea.employee_stuff;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Employee implements Payable, Comparable<Employee> {
     private short number; // employee number
     protected double salary;   // employee salary in pence
@@ -10,6 +13,7 @@ public class Employee implements Payable, Comparable<Employee> {
     private String phoneNumber; // Phone Number
     private String email; //email
 
+    /*
     public Employee(short number, double salary, String firstName, String lastName, String bankAccountNumber, String niNumber, String phoneNumber, String email) {
         this.number = number;
         this.salary = salary;
@@ -20,7 +24,7 @@ public class Employee implements Payable, Comparable<Employee> {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
-
+*/
     public String getBankAccountNumber() {
         return bankAccountNumber;
     }
@@ -133,4 +137,21 @@ public class Employee implements Payable, Comparable<Employee> {
     public int compareTo(Employee x){
         return Double.compare(this.getSalary(), x.getSalary());
     }
+
+    @JsonCreator
+    public Employee(@JsonProperty("number")short number, @JsonProperty("salary") double salary,
+                    @JsonProperty("firstname") String firstName, @JsonProperty("lastname") String lastName,
+                    @JsonProperty("bankAccountNumber") String bankAccountNumber, @JsonProperty("niNumber") String niNumber,
+                    @JsonProperty("phoneNumber") String phoneNumber, @JsonProperty("email") String email) {
+        this.number = number;
+        this.salary = salary;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bankAccountNumber = bankAccountNumber;
+        this.niNumber = niNumber;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+
 }
