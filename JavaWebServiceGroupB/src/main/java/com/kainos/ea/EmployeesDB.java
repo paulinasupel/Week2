@@ -47,23 +47,42 @@ public class EmployeesDB {
         }
         return null;
     }
-    static List<Employee> getEmployees() {
-        List<Employee> emps = new ArrayList<>();
-
+    public static List<String> getEmployees() {
+        List<String> emps = new ArrayList<>();
+        String resp = "";
         try {
             Connection con = EmployeesDB.getConnection();  // Bad practices alert!
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(
-                    "SELECT emp_no AS `number`, "
-                            + "CONCAT_WS (' ', first_name, last_name) AS `name`, "
-                            + "salary * 100 AS `salary` "
-                            + "FROM employees JOIN salaries USING(emp_no) "
-                            + "WHERE to_date > NOW() AND salary = 100000");
+"SELECT s.se_id AS 'Sales ID', " +
+        "                    CONCAT_WS (' ', e.fname, e.lname) AS 'Sales name'" +
+        "                    FROM Employee e, SalesEmployee s " +
+        "                    WHERE e.emp_id = s.se_id;");
+            while (rs.next()) {
+                /*Employee dbEmp = new Employee((short) rs.getInt("emp_id"), rs.getDouble("salary"), rs.getString("fname"), rs.getString("lname"),
+                        rs.getString("bankAccountNumber"), rs.getString("NIN"),
+                        rs.getString("phoneNumber"), rs.getString("email"));
+                System.out.println(dbEmp);
+
+                 */
+                resp = ("These is a sales employee: " + "ID: " +  rs.getInt("Sales ID")
+                        + ", name: " +  rs.getString("Sales name"));
+                //emps.add(dbEmp);
+                emps.add(resp);
+
+
+            }
+            rs = st.executeQuery("SELECT s.de_id AS 'Delivery ID', " +
+                    "                    CONCAT_WS (' ', e.fname, e.lname) AS 'Delivery name'" +
+                    "                    FROM Employee e, DeliveryEmployee s " +
+                    "                    WHERE e.emp_id = s.de_id;");
 
             while (rs.next()) {
-                Employee dbEmp = new Employee((short) rs.getInt("number"), rs.getInt("salary"), rs.getString("name"));
-                System.out.println(dbEmp);
-                emps.add(dbEmp);
+
+              resp = ("These is a delivery employee: " + "ID: " +  rs.getInt("Delivery ID")
+                       + ", name: " +  rs.getString("Delivery name"));
+                emps.add(resp);
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace(); // Bad practice alert!

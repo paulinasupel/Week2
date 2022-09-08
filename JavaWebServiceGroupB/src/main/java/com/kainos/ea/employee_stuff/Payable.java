@@ -1,7 +1,7 @@
 package com.kainos.ea.employee_stuff;
 
 public interface Payable {
-    public int calcPay();
+    public double calcPay();
 
     public String getFirstName();
 
