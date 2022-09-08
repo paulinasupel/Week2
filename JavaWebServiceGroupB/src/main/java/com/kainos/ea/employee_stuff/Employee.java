@@ -2,7 +2,7 @@ package com.kainos.ea.employee_stuff;
 
 public class Employee implements Payable, Comparable<Employee> {
     private short number; // employee number
-    protected int salary;   // employee salary in pence
+    protected double salary;   // employee salary in pence
     private String firstName;  // employee first name
     private String lastName; //employee last name
     private String bankAccountNumber; // employee Bank Account number
@@ -10,7 +10,7 @@ public class Employee implements Payable, Comparable<Employee> {
     private String phoneNumber; // Phone Number
     private String email; //email
 
-    public Employee(short number, int salary, String firstName, String lastName, String bankAccountNumber, String niNumber, String phoneNumber, String email) {
+    public Employee(short number, double salary, String firstName, String lastName, String bankAccountNumber, String niNumber, String phoneNumber, String email) {
         this.number = number;
         this.salary = salary;
         this.firstName = firstName;
@@ -71,7 +71,7 @@ public class Employee implements Payable, Comparable<Employee> {
 
     public static final int MIN_SALARY = 7000_00;
 
-    public int calcPay() { // calculate monthly pay in pence
+    public double calcPay() { // calculate monthly pay in pence
         return getSalary() / 12;
     }
 
@@ -102,7 +102,7 @@ public class Employee implements Payable, Comparable<Employee> {
         }
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -131,6 +131,6 @@ public class Employee implements Payable, Comparable<Employee> {
     }
 
     public int compareTo(Employee x){
-        return Float.compare(this.getSalary(), x.getSalary());
+        return Double.compare(this.getSalary(), x.getSalary());
     }
 }

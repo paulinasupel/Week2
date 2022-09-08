@@ -33,7 +33,7 @@ public class Connection {
                         "Properties file must exist and must contain "
                                 + "user, password, and host properties.");
             conn = DriverManager.getConnection("jdbc:mysql://"
-                    + host + "/employees?useSSL=false", user, password);
+                    + host + "/GroupB_PaulinaS?useSSL=false", user, password);
             return conn;
 
         } catch (Exception e) {
