@@ -90,5 +90,24 @@ public class EmployeesDB {
         return emps;
     }
 
+    public static Employee insertEmployees(Employee employee) {
+        try {
+            Connection con = EmployeesDB.getConnection();  // Bad practices alert!
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(
+                    "INSERT INTO Employee (fname, lname, salary, bankAccountNumber, NIN, phoneNumber, email)"
+
+    + "VALUES" + employee.getFirstName() + ", " + employee.getLastName() + ", " +
+                            employee.getSalary() + ", " + employee.getBankAccountNumber() + ", " +
+                            employee.getNiNumber() + ", " + employee.getPhoneNumber() + ", " +
+                            employee.getEmail());
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Bad practice alert!
+        }
+        return employee;
+    }
+
+
 
 }
