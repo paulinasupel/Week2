@@ -34,6 +34,14 @@ public class WebService {
     }
 
     @POST
+    @Path("/addSalesEmployee")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String insertSalesEmployee(Employee employee) {
+        return EmployeesDB.insertEmployees(employee);
+    }
+
+    @POST
     @Path("/print")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
