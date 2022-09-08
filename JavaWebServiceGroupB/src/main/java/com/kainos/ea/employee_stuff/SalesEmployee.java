@@ -1,5 +1,7 @@
 package com.kainos.ea.employee_stuff;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SalesEmployee extends Employee {
     public SalesEmployee() {
     }
@@ -7,7 +9,10 @@ public class SalesEmployee extends Employee {
     private float commissionRate;
     private int salesTotal;
 
-    public SalesEmployee( double salary, String firstName, String lastName, String bankAccountNumber, String niNumber, String phoneNumber, String email, float commissionRate, int salesTotal) {
+    public SalesEmployee(@JsonProperty("salary") double salary,
+                         @JsonProperty("firstname") String firstName, @JsonProperty("lastname") String lastName,
+                         @JsonProperty("bankAccountNumber") String bankAccountNumber, @JsonProperty("niNumber") String niNumber,
+                         @JsonProperty("phoneNumber") String phoneNumber, @JsonProperty("email") String email ,@JsonProperty("Commision") float commissionRate,@JsonProperty("salesThisMonth") int salesTotal) {
         super( salary, firstName, lastName, bankAccountNumber, niNumber, phoneNumber, email);
         this.commissionRate = commissionRate;
         this.salesTotal = salesTotal;
@@ -51,4 +56,6 @@ public class SalesEmployee extends Employee {
                 ", salesTotal=" + salesTotal +
                 '}';
     }
+
+
 }

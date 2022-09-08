@@ -2,6 +2,7 @@ package com.kainos.ea.resources;
 
 import com.kainos.ea.EmployeesDB;
 import com.kainos.ea.employee_stuff.Employee;
+import com.kainos.ea.employee_stuff.SalesEmployee;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -37,8 +38,8 @@ public class WebService {
     @Path("/addSalesEmployee")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String insertSalesEmployee(Employee employee) {
-        return EmployeesDB.insertEmployees(employee);
+    public String insertSalesEmployee(SalesEmployee employee) {
+        return EmployeesDB.insertESalesEmployees(employee);
     }
 
     @POST
