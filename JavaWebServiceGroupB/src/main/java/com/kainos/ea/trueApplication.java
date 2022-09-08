@@ -3,6 +3,8 @@ package com.kainos.ea;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import com.kainos.ea.resources.WebService;
+
 
 public class trueApplication extends Application<trueConfiguration> {
 
@@ -24,6 +26,7 @@ public class trueApplication extends Application<trueConfiguration> {
     public void run(final trueConfiguration configuration,
                     final Environment environment) {
         // TODO: implement application
+        environment.jersey().register(new WebService());
     }
 
 }
