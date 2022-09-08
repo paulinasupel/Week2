@@ -54,10 +54,10 @@ public class EmployeesDB {
             Connection con = EmployeesDB.getConnection();  // Bad practices alert!
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(
-"SELECT s.se_id AS 'Sales ID', " +
-        "                    CONCAT_WS (' ', e.fname, e.lname) AS 'Sales name'" +
-        "                    FROM Employee e, SalesEmployee s " +
-        "                    WHERE e.emp_id = s.se_id;");
+                    "SELECT s.se_id AS 'Sales ID', " +
+                            "                    CONCAT_WS (' ', e.fname, e.lname) AS 'Sales name'" +
+                            "                    FROM Employee e, SalesEmployee s " +
+                            "                    WHERE e.emp_id = s.se_id;");
             while (rs.next()) {
                 /*Employee dbEmp = new Employee((short) rs.getInt("emp_id"), rs.getDouble("salary"), rs.getString("fname"), rs.getString("lname"),
                         rs.getString("bankAccountNumber"), rs.getString("NIN"),
@@ -79,8 +79,8 @@ public class EmployeesDB {
 
             while (rs.next()) {
 
-              resp = ("These is a delivery employee: " + "ID: " +  rs.getInt("Delivery ID")
-                       + ", name: " +  rs.getString("Delivery name"));
+                resp = ("These is a delivery employee: " + "ID: " +  rs.getInt("Delivery ID")
+                        + ", name: " +  rs.getString("Delivery name"));
                 emps.add(resp);
 
             }
@@ -90,22 +90,22 @@ public class EmployeesDB {
         return emps;
     }
 
-    public static Employee insertEmployees(Employee employee) {
+    public static String insertEmployees(Employee employee) {
         try {
             Connection con = EmployeesDB.getConnection();  // Bad practices alert!
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(
+            st.executeUpdate(
                     "INSERT INTO Employee (fname, lname, salary, bankAccountNumber, NIN, phoneNumber, email)"
 
-    + "VALUES" + employee.getFirstName() + ", " + employee.getLastName() + ", " +
-                            employee.getSalary() + ", " + employee.getBankAccountNumber() + ", " +
-                            employee.getNiNumber() + ", " + employee.getPhoneNumber() + ", " +
-                            employee.getEmail());
+                            + " VALUES ('" + employee.getFirstName() + "', '" + employee.getLastName() + "', " +
+                            employee.getSalary() + ", '" + employee.getBankAccountNumber() + "', '" +
+                            employee.getNiNumber() + "', '" + employee.getPhoneNumber() + "', '" +
+                            employee.getEmail()+"')");
 
         } catch (SQLException ex) {
             ex.printStackTrace(); // Bad practice alert!
         }
-        return employee;
+        return "Employee:"+employee.getFirstName()+" "+employee.getLastName()+" added!";
     }
 
 

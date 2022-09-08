@@ -7,8 +7,8 @@ public class SalesEmployee extends Employee {
     private float commissionRate;
     private int salesTotal;
 
-    public SalesEmployee(short number, double salary, String firstName, String lastName, String bankAccountNumber, String niNumber, String phoneNumber, String email, float commissionRate, int salesTotal) {
-        super(number, salary, firstName, lastName, bankAccountNumber, niNumber, phoneNumber, email);
+    public SalesEmployee( double salary, String firstName, String lastName, String bankAccountNumber, String niNumber, String phoneNumber, String email, float commissionRate, int salesTotal) {
+        super( salary, firstName, lastName, bankAccountNumber, niNumber, phoneNumber, email);
         this.commissionRate = commissionRate;
         this.salesTotal = salesTotal;
     }

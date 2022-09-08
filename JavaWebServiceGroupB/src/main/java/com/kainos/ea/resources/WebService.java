@@ -29,7 +29,7 @@ public class WebService {
     @Path("/addEmployee")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Employee insertEmployee(Employee employee) {
+    public String insertEmployee(Employee employee) {
         return EmployeesDB.insertEmployees(employee);
     }
 

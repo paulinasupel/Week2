@@ -139,11 +139,11 @@ public class Employee implements Payable, Comparable<Employee> {
     }
 
     @JsonCreator
-    public Employee(@JsonProperty("number")short number, @JsonProperty("salary") double salary,
-                    @JsonProperty("firstname") String firstName, @JsonProperty("lastname") String lastName,
-                    @JsonProperty("bankAccountNumber") String bankAccountNumber, @JsonProperty("niNumber") String niNumber,
-                    @JsonProperty("phoneNumber") String phoneNumber, @JsonProperty("email") String email) {
-        this.number = number;
+    public Employee( @JsonProperty("salary") double salary,
+                     @JsonProperty("firstname") String firstName, @JsonProperty("lastname") String lastName,
+                     @JsonProperty("bankAccountNumber") String bankAccountNumber, @JsonProperty("niNumber") String niNumber,
+                     @JsonProperty("phoneNumber") String phoneNumber, @JsonProperty("email") String email) {
+
         this.salary = salary;
         this.firstName = firstName;
         this.lastName = lastName;
