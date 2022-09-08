@@ -1,6 +1,7 @@
 package com.kainos.ea;
 
 import com.kainos.ea.employee_stuff.Employee;
+import com.kainos.ea.employee_stuff.SalesEmployee;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -102,6 +103,29 @@ public class EmployeesDB {
                             employee.getNiNumber() + "', '" + employee.getPhoneNumber() + "', '" +
                             employee.getEmail()+"')");
 
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Bad practice alert!
+        }
+        return "Employee:"+employee.getFirstName()+" "+employee.getLastName()+" added!";
+    }
+//INSERT INTO SalesEmployee (se_id,Commision, salesThisMonth) VALUES (7,0.010, 40000.50);
+    public static String insertESalesEmployees(SalesEmployee employee) {
+        try {
+            Connection con = EmployeesDB.getConnection();  // Bad practices alert!
+            Statement st = con.createStatement();
+            st.executeUpdate(
+                    "INSERT INTO Employee (fname, lname, salary, bankAccountNumber, NIN, phoneNumber, email)"
+
+                            + " VALUES ('" + employee.getFirstName() + "', '" + employee.getLastName() + "', " +
+                            employee.getSalary() + ", '" + employee.getBankAccountNumber() + "', '" +
+                            employee.getNiNumber() + "', '" + employee.getPhoneNumber() + "', '" +
+                            employee.getEmail()+"')");
+            ResultSet rs = st.executeQuery("SELECT max(emp_id) FROM Employee");
+            while (rs.next()) {
+                st.executeUpdate("INSERT INTO SalesEmployee (se_id,Commision, salesThisMonth) VALUES (" + rs.getInt(0) + ", "+
+                        employee.getCommissionRate() + ", " + employee.getSalesTotal() + ")" );
+
+            }
         } catch (SQLException ex) {
             ex.printStackTrace(); // Bad practice alert!
         }
