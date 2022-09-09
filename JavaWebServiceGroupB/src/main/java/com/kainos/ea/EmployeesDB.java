@@ -110,6 +110,7 @@ public class EmployeesDB {
     }
 //INSERT INTO SalesEmployee (se_id,Commision, salesThisMonth) VALUES (7,0.010, 40000.50);
     public static String insertESalesEmployees(SalesEmployee employee) {
+        int i=0;
         try {
             Connection con = EmployeesDB.getConnection();  // Bad practices alert!
             Statement st = con.createStatement();
@@ -122,10 +123,12 @@ public class EmployeesDB {
                             employee.getEmail()+"')");
             ResultSet rs = st.executeQuery("SELECT max(emp_id) FROM Employee");
             while (rs.next()) {
-                st.executeUpdate("INSERT INTO SalesEmployee (se_id,Commision, salesThisMonth) VALUES (" + rs.getInt(0) + ", "+
-                        employee.getCommissionRate() + ", " + employee.getSalesTotal() + ")" );
+                i = rs.getInt(1);
+
 
             }
+            st.executeUpdate("INSERT INTO SalesEmployee (se_id,Commision, salesThisMonth) VALUES ('" + i + "', '"+
+                    employee.getCommissionRate() + "', '" + employee.getSalesTotal() + "')" );
         } catch (SQLException ex) {
             ex.printStackTrace(); // Bad practice alert!
         }
