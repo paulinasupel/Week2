@@ -20,7 +20,7 @@ public class EmployeesDBTest {
     }
 
     @Test
-    public void getEmployees() {
+    public void getEmployeesTest() {
 
         List<String> emps1 = new ArrayList<>();
         List<String> newEmps1= new ArrayList<>();
