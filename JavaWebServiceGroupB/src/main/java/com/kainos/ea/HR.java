@@ -6,7 +6,7 @@ import java.util.List;
 
 public class HR {
     public static void main(String[] args) {
-        List<String> bigEmps = EmployeesDB.getEmployees();
+        List<Employee> bigEmps = EmployeesDB.getSalesEmployees();
 
     }
 }

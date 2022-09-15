@@ -153,5 +153,20 @@ public class Employee implements Payable, Comparable<Employee> {
         this.email = email;
     }
 
+    @JsonCreator
+    public Employee( short number, double salary,
+                     @JsonProperty("firstname") String firstName, @JsonProperty("lastname") String lastName,
+                     @JsonProperty("bankAccountNumber") String bankAccountNumber, @JsonProperty("niNumber") String niNumber,
+                     @JsonProperty("phoneNumber") String phoneNumber, @JsonProperty("email") String email) {
+        this.number = number;
+        this.salary = salary;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bankAccountNumber = bankAccountNumber;
+        this.niNumber = niNumber;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
 
 }
