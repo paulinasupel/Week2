@@ -60,7 +60,7 @@ public class EmployeesDB {
             while (rs.next()) {
 
                 Employee emp = new Employee(
-                        (short)rs.getInt("emp_id"),
+
                         rs.getDouble("salary"),
                         rs.getString("fname"),
                         rs.getString("lname"),
@@ -92,7 +92,7 @@ public class EmployeesDB {
             while (rs.next()) {
 
                 Employee emp = new Employee(
-                        (short)rs.getInt("emp_id"),
+
                         rs.getDouble("salary"),
                         rs.getString("fname"),
                         rs.getString("lname"),
@@ -121,7 +121,7 @@ public class EmployeesDB {
             while (rs.next()) {
 
                 Employee emp = new Employee(
-                        (short)rs.getInt("emp_id"),
+
                         rs.getDouble("salary"),
                         rs.getString("fname"),
                         rs.getString("lname"),
