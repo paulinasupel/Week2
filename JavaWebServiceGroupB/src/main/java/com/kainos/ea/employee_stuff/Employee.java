@@ -153,8 +153,8 @@ public class Employee implements Payable, Comparable<Employee> {
         this.email = email;
     }
 
-    @JsonCreator
-    public Employee( short number, double salary,
+   /* @JsonCreator
+    public Employee( short number, @JsonProperty("salary")double salary,
                      @JsonProperty("firstname") String firstName, @JsonProperty("lastname") String lastName,
                      @JsonProperty("bankAccountNumber") String bankAccountNumber, @JsonProperty("niNumber") String niNumber,
                      @JsonProperty("phoneNumber") String phoneNumber, @JsonProperty("email") String email) {
@@ -168,5 +168,5 @@ public class Employee implements Payable, Comparable<Employee> {
         this.email = email;
     }
 
-
+*/
 }
