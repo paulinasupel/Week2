@@ -111,6 +111,32 @@ public class EmployeesDB {
         return emps;
     }
 
+    public static List<Employee> getEmployees() {
+        List<Employee> emps = new ArrayList<>();
+        try {
+            Connection con = EmployeesDB.getConnection();  // Bad practices alert!
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM Employee;");
+
+            while (rs.next()) {
+
+                Employee emp = new Employee(
+                        (short)rs.getInt("emp_id"),
+                        rs.getDouble("salary"),
+                        rs.getString("fname"),
+                        rs.getString("lname"),
+                        rs.getString("bankAccountNumber"),
+                        rs.getString("NIN"),
+                        rs.getString("phoneNumber"),
+                        rs.getString("email"));
+
+                emps.add(emp);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Bad practice alert!
+        }
+        return emps;
+    }
     public static String insertEmployees(Employee employee) {
         try {
             Connection con = EmployeesDB.getConnection();  // Bad practices alert!

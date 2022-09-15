@@ -40,6 +40,13 @@ public class WebService {
         return EmployeesDB.getDeliveryEmployees();
     }
 
+    @GET
+    @Path("/reportEmployeeDetails")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Employee> reportEmployeeDetails() {
+        return EmployeesDB.getEmployees();
+    }
+
     @POST
     @Path("/addEmployee")
     @Consumes(MediaType.APPLICATION_JSON)
