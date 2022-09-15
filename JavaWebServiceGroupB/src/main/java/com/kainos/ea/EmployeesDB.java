@@ -54,7 +54,7 @@ public class EmployeesDB {
             Connection con = EmployeesDB.getConnection();  // Bad practices alert!
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(
-                    "SELECT emp_id, fname, lname, salary, bankAccountNumber, NIN, phoneNumber, email, SalesEmployee.Commision, " +
+                    "SELECT emp_id, fname, lname, salary, bankAccountNumber, NIN, phoneNumber, email, SalesEmployee.Commission, " +
                             "SalesEmployee.salesThisMonth FROM Employee JOIN SalesEmployee ON Employee.emp_id = SalesEmployee.se_id " +
                             "WHERE Employee.emp_id = SalesEmployee.se_id;");
             while (rs.next()) {
@@ -155,7 +155,7 @@ public class EmployeesDB {
         return "Employee:"+employee.getFirstName()+" "+employee.getLastName()+" added!";
     }
 //INSERT INTO SalesEmployee (se_id,Commision, salesThisMonth) VALUES (7,0.010, 40000.50);
-    public static String insertESalesEmployees(SalesEmployee employee) {
+    public static String insertSalesEmployees(SalesEmployee employee) {
         int i=0;
         try {
             Connection con = EmployeesDB.getConnection();  // Bad practices alert!
@@ -173,7 +173,7 @@ public class EmployeesDB {
 
 
             }
-            st.executeUpdate("INSERT INTO SalesEmployee (se_id,Commision, salesThisMonth) VALUES ('" + i + "', '"+
+            st.executeUpdate("INSERT INTO SalesEmployee (se_id,Commission, salesThisMonth) VALUES ('" + i + "', '"+
                     employee.getCommissionRate() + "', '" + employee.getSalesTotal() + "')" );
         } catch (SQLException ex) {
             ex.printStackTrace(); // Bad practice alert!
