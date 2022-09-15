@@ -60,7 +60,7 @@ public class WebService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String insertSalesEmployee(SalesEmployee employee) {
-        return EmployeesDB.insertESalesEmployees(employee);
+        return EmployeesDB.insertSalesEmployees(employee);
     }
 
     @POST
