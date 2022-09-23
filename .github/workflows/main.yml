@@ -50,6 +50,7 @@ jobs:
           ECR_REPOSITORY: employee_demo
           IMAGE_TAG: team2-api
         run: |
-          working-directory: JavaWebServiceGroupB
           docker build --build-arg DB_PASSWORD=${DB_PASSWORD} --build-arg DB_USERNAME=${DB_USERNAME} --build-arg DB_HOST=${DB_HOST} --build-arg DB_NAME=${DB_NAME} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        working-directory: JavaWebServiceGroupB
+
